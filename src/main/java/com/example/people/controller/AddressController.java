@@ -1,6 +1,7 @@
 package com.example.people.controller;
 
 import com.example.people.model.Address;
+import com.example.people.model.Contact;
 import com.example.people.model.People;
 import com.example.people.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,11 @@ public class AddressController {
     public ResponseEntity<?> deleteAddress(@PathVariable("id") Long id) {
         addressService.deleteAddress(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping("/put/{id}")
+    public ResponseEntity<String> putAddress(@PathVariable("id") Long id, @RequestBody Address address) {
+        addressService.putAddress(id, address);
+        return new ResponseEntity<>("Sikeres módosítás", HttpStatus.OK);
     }
 }

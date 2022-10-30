@@ -13,11 +13,11 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
+    @NotBlank(message = "Város megadása kötelező")
     private String city;
-    @NotBlank
+    @NotBlank(message = "Utca, házszám megadása kötelező")
     private String streetHouseNumber;
-    @NotBlank
+    @NotBlank(message = "Típus megadása kötelező")
     private String type;
 
     @OneToMany(targetEntity = Contact.class, cascade = CascadeType.ALL)
