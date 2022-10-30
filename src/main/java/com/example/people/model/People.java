@@ -1,10 +1,13 @@
 package com.example.people.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
+@Data
 public class People {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,7 +15,7 @@ public class People {
     @NotBlank
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "people_id", referencedColumnName = "id")
     private List<Address> addresses;
 

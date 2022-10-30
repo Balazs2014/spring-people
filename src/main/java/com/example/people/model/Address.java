@@ -1,13 +1,14 @@
 package com.example.people.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import java.util.List;
 
 @Entity
+@Data
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +19,10 @@ public class Address {
     private String streetHouseNumber;
     @NotBlank
     private String type;
+
+    @OneToMany(targetEntity = Contact.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private List<Contact> contacts;
 
     public Address() {
     }
@@ -60,4 +65,5 @@ public class Address {
     public void setType(String type) {
         this.type = type;
     }
+
 }
