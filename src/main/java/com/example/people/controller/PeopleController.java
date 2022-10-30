@@ -26,7 +26,7 @@ public class PeopleController {
     @PostMapping("/post")
     public ResponseEntity<String> postPeople(@RequestBody List<People> people) {
         peopleService.postPeople(people);
-        return new ResponseEntity<>("Created", HttpStatus.CREATED);
+        return new ResponseEntity<>("Sikeres Hozzáadás", HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")

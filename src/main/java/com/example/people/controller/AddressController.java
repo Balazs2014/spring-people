@@ -22,7 +22,7 @@ public class AddressController {
     @PostMapping("/post")
     public ResponseEntity<String> postAddress(@RequestBody Address address) {
         addressService.postAddress(address);
-        return new ResponseEntity<>("Created", HttpStatus.CREATED);
+        return new ResponseEntity<>("Sikeres Hozzáadás", HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{id}")
