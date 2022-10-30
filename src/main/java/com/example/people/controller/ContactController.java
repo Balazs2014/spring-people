@@ -28,4 +28,10 @@ public class ContactController {
         contactService.deleteContact(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PutMapping("/put/{id}")
+    public ResponseEntity<String> putContact(@PathVariable("id") Long id, @RequestBody Contact contact) {
+        contactService.putContact(id, contact);
+        return new ResponseEntity<>("Sikeres módosítás", HttpStatus.OK);
+    }
 }
