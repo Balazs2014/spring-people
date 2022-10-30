@@ -34,4 +34,10 @@ public class PeopleController {
         peopleService.deletePeople(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PutMapping("/put/{id}")
+    public ResponseEntity<String> putPeople(@PathVariable("id") Long id, @RequestParam String name) {
+        peopleService.putPeople(id, name);
+        return new ResponseEntity<>("Sikeres módosítás", HttpStatus.OK);
+    }
 }

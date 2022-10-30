@@ -12,7 +12,7 @@ public class People {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
+    @NotBlank(message = "Név megadása kötelező")
     private String name;
 
     @OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
@@ -22,8 +22,7 @@ public class People {
     public People() {
     }
 
-    public People(Long id, String name) {
-        this.id = id;
+    public People(String name) {
         this.name = name;
     }
 
